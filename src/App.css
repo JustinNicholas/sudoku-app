@@ -120,3 +120,14 @@
   top: 140px;
   left: 140px;
 }
+
+p {
+  line-height: 70px;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 30px;
+  font-weight: bold;
+}
