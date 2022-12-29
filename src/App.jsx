@@ -5,6 +5,20 @@ function App() {
 
   const [mistakes, setMistakes] = useState(0);
 
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+
+  const updateTime = () => {
+    if (minutes<59) {
+      setMinutes(minutes + 1);
+    } else {
+      setMinutes(0);
+      setHours(hours+1);
+    }
+  } 
+
+setInterval(() =>{ updateTime()}, 60000)
+
   let answersBlock1 = [ 4,9,8,7,2,5,3,6,1,5,3,1,6,4,9,8,2,7,6,7,2,8,3,1,5,4,9,9,4,2,1,5,6,8,3,7,1,8,5,3,7,4,9,6,2,7,6,3,9,2,8,4,1,5,2,8,3,5,7,4,6,1,9,4,9,6,2,1,8,7,5,3,1,5,7,3,9,6,2,8,4 ];
 
   const checkAnswer = (event) => {
@@ -25,6 +39,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <p>mistakes = {mistakes}</p>
+      <p>Timer: {hours} Hours {minutes} Minutes</p>
       </header>
 
       <main>
