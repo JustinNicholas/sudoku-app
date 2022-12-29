@@ -131,3 +131,13 @@ p {
   font-size: 30px;
   font-weight: bold;
 }
+
+.block-input {
+  padding: 0;
+  width: 70px;
+  height: 70px;
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}

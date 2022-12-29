@@ -1,6 +1,20 @@
 import './App.css';
 
 function App() {
+
+  let answersBlock1 = [ 4,9,8,7,2,5,3,6,1 ];
+
+  const checkAnswer = (event) => {
+    let entry = event.target.value
+    let id = event.target.id
+
+    if(entry == answersBlock1[id - 1]) {
+      //want to turn light blue light sudoku.
+    } else {
+      // want to turn red and tally the error count.
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -11,10 +25,10 @@ function App() {
         <div className='whole-box'>
           <div className='box-1 boxes'>
             <div className='block-1 blocks'>
-              
+              <input id='1' className='block-input' onChange={(event) => checkAnswer(event)} type="text" />
             </div>
             <div className='block-2 blocks'>
-
+              <input id='2' className='block-input' type="text" />
             </div>
             <div className='block-3 blocks'>
               <p>3</p>
@@ -23,19 +37,19 @@ function App() {
               <p>9</p>
             </div>
             <div className='block-5 blocks'>
-
+              <input id='5' className='block-input' type="text" />
             </div>
             <div className='block-6 blocks'>
-
+              <input id='6' className='block-input' type="text" />
             </div>
             <div className='block-7 blocks'>
-
+              <input id='7' className='block-input' type="text" />
             </div>
             <div className='block-8 blocks'>
-
+              <input id='8' className='block-input' type="text" />
             </div>
             <div className='block-9 blocks'>
-
+              <input id='9' className='block-input' type="text" />
             </div>
           </div>
           <div className='box-2 boxes'>
