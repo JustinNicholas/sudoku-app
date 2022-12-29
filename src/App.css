@@ -29,62 +29,94 @@
 }
 
 .boxes {
+  position: absolute;
   width: 210px;
   height: 210px;
+  border: 1px solid black;
 }
 
 .box-1 {
-  position: absolute;
-  border: 1px solid black;
+  
 }
 
 .box-2 {
-  position: absolute;
   left: 210px;
-  border: 1px solid black;
 }
 .box-3 {
-  position: absolute;
   left: 420px;
-  border: 1px solid black;
 }
 
 .box-4 {
-  position: absolute;
   top: 210px;
-  border: 1px solid black;
 }
 
 .box-5 {
-  position: absolute;
   left: 210px;
   top: 210px;
-  border: 1px solid black;
 }
 
 .box-6 {
-  position: absolute;
   top: 210px;
   left: 420px;
-  border: 1px solid black;
 }
 
 .box-7 {
-  position: absolute;
   top: 420px;
-  border: 1px solid black;
 }
 
 .box-8 {
-  position: absolute;
   left: 210px;
   top: 420px;
-  border: 1px solid black;
 }
 
 .box-9 {
-  position: absolute;
   left: 420px;
   top: 420px;
+}
+
+.blocks {
+  position: absolute;
+  width: 70px;
+  height: 70px;
   border: 1px solid black;
+}
+
+.block-1 {
+
+}
+
+.block-2 {
+  left: 70px;
+}
+
+.block-3 {
+  left: 140px;
+}
+
+.block-4 {
+  top: 70px;
+}
+
+.block-5 {
+  top: 70px;
+  left: 70px;
+}
+
+.block-6 {
+  top: 70px;
+  left: 140px;
+}
+
+.block-7 {
+  top: 140px;
+}
+
+.block-8 {
+  top: 140px;
+  left: 70px;
+}
+
+.block-9 {
+  top: 140px;
+  left: 140px;
 }
