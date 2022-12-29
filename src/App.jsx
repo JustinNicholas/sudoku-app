@@ -38,7 +38,7 @@ setInterval(() =>{ updateTime()}, 60000)
   return (
     <div className="App">
       <header className="App-header">
-      <p>mistakes = {mistakes}</p>
+      <p>Mistakes = {mistakes}/3</p>
       <p>Timer: {hours} Hours {minutes} Minutes</p>
       </header>
 
