@@ -1,6 +1,9 @@
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [mistakes, setMistakes] = useState(0);
 
   let answersBlock1 = [ 4,9,8,7,2,5,3,6,1,5,3,1,6,4,9,8,2,7,6,7,2,8,3,1,5,4,9,9,4,2,1,5,6,8,3,7,1,8,5,3,7,4,9,6,2,7,6,3,9,2,8,4,1,5,2,8,3,5,7,4,6,1,9,4,9,6,2,1,8,7,5,3,1,5,7,3,9,6,2,8,4 ];
 
@@ -8,18 +11,20 @@ function App() {
     let entry = event.target.value
     let id = event.target.id
 
-    if(entry == answersBlock1[id - 1]) {
+    if(entry == answersBlock1[id - 1] || entry == '') {
       //want to turn light blue light sudoku.
+      event.currentTarget.classList.remove('wrong-answer');
     } else {
       // want to turn red and tally the error count.
-      event.currentTarget.classList.toggle('wrong-answer');
+      event.currentTarget.classList.add('wrong-answer');
+      setMistakes(mistakes + 1);
     }
   }
 
   return (
     <div className="App">
       <header className="App-header">
-
+      <p>mistakes = {mistakes}</p>
       </header>
 
       <main>
