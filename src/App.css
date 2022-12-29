@@ -20,8 +20,8 @@
 .whole-box {
   position: relative;
   border: 2px solid black;
-  width: 630px;
-  height: 630px;
+  width: 634px;
+  height: 634px;
   margin-top: 100px;
   margin-bottom: 100px;
   margin-left: auto;
@@ -36,42 +36,42 @@
 }
 
 .box-1 {
-  
+
 }
 
 .box-2 {
-  left: 210px;
+  left: 212px;
 }
 .box-3 {
-  left: 420px;
+  left: 424px;
 }
 
 .box-4 {
-  top: 210px;
+  top: 212px;
 }
 
 .box-5 {
-  left: 210px;
-  top: 210px;
+  left: 212px;
+  top: 212px;
 }
 
 .box-6 {
-  top: 210px;
-  left: 420px;
+  top: 212px;
+  left: 423px;
 }
 
 .box-7 {
-  top: 420px;
+  top: 423px;
 }
 
 .box-8 {
-  left: 210px;
-  top: 420px;
+  left: 212px;
+  top: 424px;
 }
 
 .box-9 {
-  left: 420px;
-  top: 420px;
+  left: 424px;
+  top: 424px;
 }
 
 .blocks {
@@ -133,11 +133,18 @@ p {
 }
 
 .block-input {
+  margin-top: 3px;
+  margin-left: 2px;
+  margin-right: 2px;
   padding: 0;
-  width: 70px;
-  height: 70px;
+  width: 64px;
+  height: 64px;
   border: none;
   font-size: 30px;
   font-weight: bold;
   text-align: center;
+}
+
+.wrong-answer {
+  color: red;
 }
