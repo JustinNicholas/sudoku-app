@@ -36,11 +36,12 @@ setInterval(() =>{ updateTime()}, 60000)
   }
 
   const highlightColumnRow = (event) => {
-    let clickedBlock = event.currentTarget
-    for ( let i=0; i<9; i++) {
-      let nextBlock = clickedBlock + 9;
-      nextBlock.classList.add('highlighted');
-    }
+    const divs =  document.querySelectorAll('.highlighted');
+    divs.forEach(div => {
+      div.classList.remove('highlighted');
+    });
+    
+    event.currentTarget.classList.add('highlighted');
   }
 
   return (
@@ -53,33 +54,33 @@ setInterval(() =>{ updateTime()}, 60000)
       <main>
         <div className='whole-box'>
           <div className='box-1 boxes'>
-            <div className='block-1 blocks'>
+            <div className='block-1 blocks' onClick={(event) => highlightColumnRow(event)}>
               {/* <input id='1' className='block-input' onChange={(event) => checkAnswer(event)} type="text" /> */}
               <p>4</p>
             </div>
-            <div className='block-2 blocks'>
-              <input id='2' className='block-input' onChange={(event) => checkAnswer(event)} onClick={(event) => highlightColumnRow(event)} type="text" />
+            <div className='block-2 blocks' onClick={(event) => highlightColumnRow(event)} >
+              <input id='2' className='block-input' onChange={(event) => checkAnswer(event)} type="text" />
             </div>
-            <div className='block-3 blocks'>
+            <div className='block-3 blocks' onClick={(event) => highlightColumnRow(event)}>
               <input id='3' className='block-input' onChange={(event) => checkAnswer(event)} type="text" />
             </div>
-            <div className='block-4 blocks'>
+            <div className='block-4 blocks' onClick={(event) => highlightColumnRow(event)}>
               <input id='4' className='block-input' onChange={(event) => checkAnswer(event)} type="text" />
             </div>
-            <div className='block-5 blocks'>
+            <div className='block-5 blocks' onClick={(event) => highlightColumnRow(event)}>
               <input id='5' className='block-input' onChange={(event) => checkAnswer(event)} type="text" />
             </div>
-            <div className='block-6 blocks'>
+            <div className='block-6 blocks' onClick={(event) => highlightColumnRow(event)}>
               <input id='6' className='block-input' onChange={(event) => checkAnswer(event)} type="text" />
             </div>
-            <div className='block-7 blocks'>
+            <div className='block-7 blocks' onClick={(event) => highlightColumnRow(event)}>
               <input id='7' className='block-input' onChange={(event) => checkAnswer(event)} type="text" />
             </div>
-            <div className='block-8 blocks'>
+            <div className='block-8 blocks' onClick={(event) => highlightColumnRow(event)}>
               {/* <input id='8' className='block-input' onChange={(event) => checkAnswer(event)} type="text" /> */}
               <p>6</p>
             </div>
-            <div className='block-9 blocks'>
+            <div className='block-9 blocks' onClick={(event) => highlightColumnRow(event)}>
               {/* <input id='9' className='block-input' onChange={(event) => checkAnswer(event)} type="text" /> */}
               <p>1</p>
             </div>

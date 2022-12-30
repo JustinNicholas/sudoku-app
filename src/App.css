@@ -143,10 +143,12 @@ p {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
+  background-color: transparent;
 }
 
 .block-input:focus {
   outline: none;
+  background-color: transparent;
 }
 
 .wrong-answer {
