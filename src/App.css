@@ -145,6 +145,10 @@ p {
   text-align: center;
 }
 
+.block-input:focus {
+  outline: none;
+}
+
 .wrong-answer {
   color: red;
 }
