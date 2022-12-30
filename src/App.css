@@ -148,3 +148,7 @@ p {
 .wrong-answer {
   color: red;
 }
+
+.highlighted {
+  background-color: grey;
+}

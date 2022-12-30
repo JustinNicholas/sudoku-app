@@ -35,6 +35,14 @@ setInterval(() =>{ updateTime()}, 60000)
     }
   }
 
+  const highlightColumnRow = (event) => {
+    let clickedBlock = event.currentTarget
+    for ( let i=0; i<9; i++) {
+      let nextBlock = clickedBlock + 9;
+      nextBlock.classList.add('highlighted');
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -50,7 +58,7 @@ setInterval(() =>{ updateTime()}, 60000)
               <p>4</p>
             </div>
             <div className='block-2 blocks'>
-              <input id='2' className='block-input' onChange={(event) => checkAnswer(event)} type="text" />
+              <input id='2' className='block-input' onChange={(event) => checkAnswer(event)} onClick={(event) => highlightColumnRow(event)} type="text" />
             </div>
             <div className='block-3 blocks'>
               <input id='3' className='block-input' onChange={(event) => checkAnswer(event)} type="text" />
