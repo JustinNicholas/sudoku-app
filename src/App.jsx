@@ -5,7 +5,6 @@ function App() {
 
   const [mistakes, setMistakes] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  // let correctAnswers = 55 //need to get to 56 to win
 
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -30,19 +29,22 @@ setInterval(() =>{ updateTime()}, 60000)
     if(entry == answersBlock1[id - 1]) {
       //want to turn light blue like sudoku.
       if(event.currentTarget.parentElement.classList.contains('correct')){
-
+        //We don't do anything because this is a user typing in answer that was already correct again.
       } else {
+        //This instance is for if a correct answer is entered. We have to remove the wrong answer classes if they were added and add all correct classes.
         event.currentTarget.classList.remove('wrong-answer');
         event.currentTarget.parentElement.classList.add('number' + event.target.value);
         event.currentTarget.parentElement.classList.add('correct');
         console.log(event.currentTarget.parentElement.classList);
         setCorrectAnswers(correctAnswers + 1)
-        // correctAnswers++;
         console.log(correctAnswers);
       }
+      highlightColumnRow(event)
     } else if(entry == '') {
+      // this instance if for if a correct or wrong answer was removed
       event.currentTarget.classList.remove('wrong-answer');
       if(event.currentTarget.parentElement.classList.contains('correct')){
+        // if it was correct we want to remove the classes so it is not highlighted 
         event.currentTarget.parentElement.classList.remove('correct');
         const classArray = Array.from(event.currentTarget.parentElement.classList)
         for ( let i=0; i<classArray.length; i++){
@@ -50,12 +52,11 @@ setInterval(() =>{ updateTime()}, 60000)
             event.currentTarget.parentElement.classList.remove(classArray[i]);  
           }
         }
-        event.currentTarget.parentElement.classList.remove('number');
-        // correctAnswers--;
+        // we also remove the correct answer tally 
         setCorrectAnswers(correctAnswers - 1);
       }
     } else {
-      // want to turn red and tally the error count.
+      // want to turn red and tally the error count if the answer was wrong.
       event.currentTarget.classList.add('wrong-answer');
       setMistakes(mistakes + 1);
     }
@@ -63,6 +64,7 @@ setInterval(() =>{ updateTime()}, 60000)
 
   const highlightColumnRow = (event) => {
 
+    // we remove all of the classes that highlight when a new box is clicked
     const blocks =  document.querySelectorAll('.light-highlighted');
     blocks.forEach(block => {
       block.classList.remove('light-highlighted');
@@ -71,7 +73,12 @@ setInterval(() =>{ updateTime()}, 60000)
     nums.forEach(num => {
       num.classList.remove('green');
     });
+    const divs =  document.querySelectorAll('.highlighted');
+    divs.forEach(div => {
+      div.classList.remove('highlighted');
+    });
 
+    // we highlight the row of the block clicked
     if (event.currentTarget.classList.contains('row-1')) {
       const divs =  document.querySelectorAll('.row-1');
       divs.forEach(div => {
@@ -119,6 +126,7 @@ setInterval(() =>{ updateTime()}, 60000)
       });
     }
 
+    // we also highlight the column of the block that was clicked.
     if (event.currentTarget.classList.contains('col-1')) {
       const divs =  document.querySelectorAll('.col-1');
       divs.forEach(div => {
@@ -165,17 +173,13 @@ setInterval(() =>{ updateTime()}, 60000)
         div.classList.add('light-highlighted');
       });
     }
-
-    const divs =  document.querySelectorAll('.highlighted');
-    divs.forEach(div => {
-      div.classList.remove('highlighted');
-    });
-    
+    // We highlight the block that was actually clicked differently than the row and column
     event.currentTarget.classList.add('highlighted');
 
     console.log(event.target.dataset.value);
     console.log(event.target.value);
 
+    // we highlight all of the same numbers green when the number is clicked
     if (event.target.value){
       const numbers =  document.querySelectorAll('.number' + event.target.value);
       numbers.forEach(number => {
@@ -188,6 +192,7 @@ setInterval(() =>{ updateTime()}, 60000)
       });
     }
   }
+  // game is displayed if user has not won or lost
   if (mistakes<3 && correctAnswers<56){
   return (
     <div className="App">
@@ -489,15 +494,16 @@ setInterval(() =>{ updateTime()}, 60000)
     </div>
   )
   } else if (mistakes>2){
+    // user see's loss screen on fail
     return(
       <div className="App">
         <main>
-         <h1>err FAILLL</h1>
+         <h1>EPIC FAIL</h1>
         </main>
       </div>
     )
   } else {
-    // if (correctAnswers>55)
+    // user sees win screen on completion
     let finalTime = 0;
     
     finalTime = hours + ':' + minutes;
