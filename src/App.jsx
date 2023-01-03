@@ -4,6 +4,7 @@ import { useState } from 'react';
 function App() {
 
   const [mistakes, setMistakes] = useState(0);
+  let correctAnswers = 0 //need to get to 56 to win
 
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -25,11 +26,31 @@ setInterval(() =>{ updateTime()}, 60000)
     let entry = event.target.value
     let id = event.target.id
 
-    if(entry == answersBlock1[id - 1] || entry == '') {
+    if(entry == answersBlock1[id - 1]) {
       //want to turn light blue like sudoku.
+      if(event.currentTarget.parentElement.classList.contains('correct')){
+
+      } else {
+        event.currentTarget.classList.remove('wrong-answer');
+        event.currentTarget.parentElement.classList.add('number' + event.target.value);
+        event.currentTarget.parentElement.classList.add('correct');
+        console.log(event.currentTarget.parentElement.classList);
+        correctAnswers++;
+        console.log(correctAnswers);
+      }
+    } else if(entry == '') {
       event.currentTarget.classList.remove('wrong-answer');
-      event.currentTarget.parentElement.classList.add('number' + event.target.value);
-      console.log(event.currentTarget.parentElement.classList);
+      if(event.currentTarget.parentElement.classList.contains('correct')){
+        event.currentTarget.parentElement.classList.remove('correct');
+        const classArray = Array.from(event.currentTarget.parentElement.classList)
+        for ( let i=0; i<classArray.length; i++){
+          if (classArray[i].startsWith('number')){
+            event.currentTarget.parentElement.classList.remove(classArray[i]);  
+          }
+        }
+        event.currentTarget.parentElement.classList.remove('number');
+        correctAnswers--;
+      }
     } else {
       // want to turn red and tally the error count.
       event.currentTarget.classList.add('wrong-answer');
