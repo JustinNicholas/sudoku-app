@@ -4,7 +4,8 @@ import { useState } from 'react';
 function App() {
 
   const [mistakes, setMistakes] = useState(0);
-  let correctAnswers = 0 //need to get to 56 to win
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  // let correctAnswers = 55 //need to get to 56 to win
 
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -35,7 +36,8 @@ setInterval(() =>{ updateTime()}, 60000)
         event.currentTarget.parentElement.classList.add('number' + event.target.value);
         event.currentTarget.parentElement.classList.add('correct');
         console.log(event.currentTarget.parentElement.classList);
-        correctAnswers++;
+        setCorrectAnswers(correctAnswers + 1)
+        // correctAnswers++;
         console.log(correctAnswers);
       }
     } else if(entry == '') {
@@ -49,7 +51,8 @@ setInterval(() =>{ updateTime()}, 60000)
           }
         }
         event.currentTarget.parentElement.classList.remove('number');
-        correctAnswers--;
+        // correctAnswers--;
+        setCorrectAnswers(correctAnswers - 1);
       }
     } else {
       // want to turn red and tally the error count.
@@ -185,7 +188,7 @@ setInterval(() =>{ updateTime()}, 60000)
       });
     }
   }
-
+  if (mistakes<3 && correctAnswers<56){
   return (
     <div className="App">
       <header className="App-header">
@@ -484,7 +487,30 @@ setInterval(() =>{ updateTime()}, 60000)
         </div>
       </main>
     </div>
-  );
+  )
+  } else if (mistakes>2){
+    return(
+      <div className="App">
+        <main>
+         <h1>err FAILLL</h1>
+        </main>
+      </div>
+    )
+  } else {
+    // if (correctAnswers>55)
+    let finalTime = 0;
+    
+    finalTime = hours + ':' + minutes;
+    return(
+      <div className="App">
+        <main>
+          <h1>Winner!</h1>
+          <h2>Mistakes: {mistakes}</h2>
+          <h2>Final Time: {finalTime}</h2>
+        </main>
+      </div>
+    )
+  }
 }
 
 export default App;
