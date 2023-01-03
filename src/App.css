@@ -155,6 +155,11 @@ p {
   color: red;
 }
 
+.light-highlighted {
+  background-color: lightgray;
+}
+
 .highlighted {
   background-color: grey;
 }
+
