@@ -1,24 +1,33 @@
 import './App.css';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(() => {
+    const timer = setInterval(() =>{updateTime()}, 1000);
+    return () => clearInterval(timer);
+  })
 
   const [mistakes, setMistakes] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
 
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
   const updateTime = () => {
-    if (minutes<59) {
+    if (seconds<59) {
+      setSeconds(seconds + 1)
+    } else if (minutes<59) {
+      setSeconds(0)
       setMinutes(minutes + 1);
     } else {
+      setSeconds(0)
       setMinutes(0);
       setHours(hours+1);
     }
-  } 
-
-setInterval(() =>{ updateTime()}, 60000)
+  }
 
   let answersBlock1 = [ 4,9,8,7,2,5,3,6,1,5,3,1,6,4,9,8,2,7,6,7,2,8,3,1,5,4,9,9,4,2,1,5,6,8,3,7,1,8,5,3,7,4,9,6,2,7,6,3,9,2,8,4,1,5,2,8,3,5,7,4,6,1,9,4,9,6,2,1,8,7,5,3,1,5,7,3,9,6,2,8,4 ];
 
@@ -197,11 +206,11 @@ setInterval(() =>{ updateTime()}, 60000)
   return (
     <div className="App">
       <header className="App-header">
-      <p>Mistakes = {mistakes}/3</p>
-      <p>Timer: {hours} Hours {minutes} Minutes</p>
+      <p className='header-text'>Justin's Sudoku</p>
       </header>
 
       <main>
+        <div className='page-wrap'>
         <div className='whole-box'>
           <div className='box-1 boxes'>
             <div className='block-1 blocks row-1 col-1 number4' onClick={(event) => highlightColumnRow(event)}>
@@ -490,6 +499,15 @@ setInterval(() =>{ updateTime()}, 60000)
             </div>
           </div>
         </div>
+        <div className='stats'>
+          <p>Mistakes: {mistakes}/3</p>
+          <p></p>
+          <p>Timer:</p>
+          <p>{hours} Hours</p>
+          <p>{minutes} Minutes</p>
+          <p>{seconds} Seconds</p>
+        </div>
+        </div>
       </main>
     </div>
   )
@@ -506,7 +524,7 @@ setInterval(() =>{ updateTime()}, 60000)
     // user sees win screen on completion
     let finalTime = 0;
     
-    finalTime = hours + ':' + minutes;
+    finalTime = hours + ':' + minutes + ':' + seconds;
     return(
       <div className="App">
         <main>
