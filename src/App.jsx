@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 function App() {
 
   useEffect(() => {
+    // we clear the interval each time it is run to eliminate flickering.
     const timer = setInterval(() =>{updateTime()}, 1000);
     return () => clearInterval(timer);
   })
@@ -87,106 +88,126 @@ function App() {
       div.classList.remove('highlighted');
     });
 
-    // we highlight the row of the block clicked
-    if (event.currentTarget.classList.contains('row-1')) {
-      const divs =  document.querySelectorAll('.row-1');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('row-2')) {
-      const divs =  document.querySelectorAll('.row-2');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('row-3')) {
-      const divs =  document.querySelectorAll('.row-3');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('row-4')) {
-      const divs =  document.querySelectorAll('.row-4');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('row-5')) {
-      const divs =  document.querySelectorAll('.row-5');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('row-6')) {
-      const divs =  document.querySelectorAll('.row-6');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('row-7')) {
-      const divs =  document.querySelectorAll('.row-7');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('row-8')) {
-      const divs =  document.querySelectorAll('.row-8');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('row-9')) {
-      const divs =  document.querySelectorAll('.row-9');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
+    // we highlight the row of the block clicked.
+    // this gets all of the classes assigned into an array and we find the one matching 'row'
+    // to get the row number and highlight all matching.
+    const rowArray = Array.from(event.currentTarget.classList)
+    for ( let i=0; i<rowArray.length; i++){
+      if (rowArray[i].startsWith('row')){ 
+        const divs =  document.querySelectorAll('.' + rowArray[i]);
+        divs.forEach(div => {
+          div.classList.add('light-highlighted');
+        });
+      }
     }
 
     // we also highlight the column of the block that was clicked.
-    if (event.currentTarget.classList.contains('col-1')) {
-      const divs =  document.querySelectorAll('.col-1');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('col-2')) {
-      const divs =  document.querySelectorAll('.col-2');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('col-3')) {
-      const divs =  document.querySelectorAll('.col-3');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('col-4')) {
-      const divs =  document.querySelectorAll('.col-4');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('col-5')) {
-      const divs =  document.querySelectorAll('.col-5');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('col-6')) {
-      const divs =  document.querySelectorAll('.col-6');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('col-7')) {
-      const divs =  document.querySelectorAll('.col-7');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('col-8')) {
-      const divs =  document.querySelectorAll('.col-8');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
-    } else if (event.currentTarget.classList.contains('col-9')) {
-      const divs =  document.querySelectorAll('.col-9');
-      divs.forEach(div => {
-        div.classList.add('light-highlighted');
-      });
+    const colArray = Array.from(event.currentTarget.classList)
+    for ( let i=0; i<rowArray.length; i++){
+      if (colArray[i].startsWith('col')){ 
+        const divs =  document.querySelectorAll('.' + colArray[i]);
+        divs.forEach(div => {
+          div.classList.add('light-highlighted');
+        });
+      }
     }
+
+
+    // if (event.currentTarget.classList.contains('row-1')) {
+    //   const divs =  document.querySelectorAll('.row-1');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('row-2')) {
+    //   const divs =  document.querySelectorAll('.row-2');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('row-3')) {
+    //   const divs =  document.querySelectorAll('.row-3');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('row-4')) {
+    //   const divs =  document.querySelectorAll('.row-4');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('row-5')) {
+    //   const divs =  document.querySelectorAll('.row-5');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('row-6')) {
+    //   const divs =  document.querySelectorAll('.row-6');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('row-7')) {
+    //   const divs =  document.querySelectorAll('.row-7');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('row-8')) {
+    //   const divs =  document.querySelectorAll('.row-8');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('row-9')) {
+    //   const divs =  document.querySelectorAll('.row-9');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // }
+
+    // if (event.currentTarget.classList.contains('col-1')) {
+    //   const divs =  document.querySelectorAll('.col-1');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('col-2')) {
+    //   const divs =  document.querySelectorAll('.col-2');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('col-3')) {
+    //   const divs =  document.querySelectorAll('.col-3');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('col-4')) {
+    //   const divs =  document.querySelectorAll('.col-4');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('col-5')) {
+    //   const divs =  document.querySelectorAll('.col-5');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('col-6')) {
+    //   const divs =  document.querySelectorAll('.col-6');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('col-7')) {
+    //   const divs =  document.querySelectorAll('.col-7');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('col-8')) {
+    //   const divs =  document.querySelectorAll('.col-8');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // } else if (event.currentTarget.classList.contains('col-9')) {
+    //   const divs =  document.querySelectorAll('.col-9');
+    //   divs.forEach(div => {
+    //     div.classList.add('light-highlighted');
+    //   });
+    // }
     // We highlight the block that was actually clicked differently than the row and column
     event.currentTarget.classList.add('highlighted');
-
-    console.log(event.target.dataset.value);
-    console.log(event.target.value);
 
     // we highlight all of the same numbers green when the number is clicked
     if (event.target.value){
